@@ -1,433 +1,307 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIreGPT – Tu Copiloto de IA para CDMX</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Roboto+Mono:wght@400;600;700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-/* Fondo Negro Carbón Profundo Homogéneo */
-background-color: #0a0a0c;
-background-attachment: fixed;
-font-family:'Poppins',sans-serif;
-overflow-x:hidden;position:relative;
-color: #fff;
-padding-bottom: 120px; /* Espacio para el botón sticky */
-}
-
-/* SMOG TECH (Nubes moradas sutiles) */
-.smog-wrap{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.smog{position:absolute;bottom:-60px;border-radius:50%;
-background:radial-gradient(circle,rgba(111,66,193,0.12) 0%,transparent 70%); /* Morado Neón */
-animation:smogRise linear infinite}
-@keyframes smogRise{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:.5}100%{transform:translateY(-110vh) scale(2.5);opacity:0}}
-
-/* BANNER LED (Acoplado a la nueva paleta) */
-.banner-led{width:100%;height:45px;background:#000;overflow:hidden;position:fixed;top:0;left:0;background-image:linear-gradient(90deg,#1a1a1d 2px,transparent 2px),linear-gradient(0deg,#1a1a1d 2px,transparent 2px);background-size:4px 4px;z-index:900;box-shadow:0 2px 10px rgba(0,0,0,0.5)}
-.banner-content{position:absolute;top:0;left:0;height:100%;white-space:nowrap;display:flex;align-items:center;animation:scrollBanner 25s linear infinite}
-.banner-text{font-family:'Roboto Mono',monospace;font-size:16px;font-weight:700;color:#ddd;letter-spacing:1px;text-transform:uppercase;padding:0 30px}
-.banner-text.hl{color:#00f2fe;font-weight: 800;} /* Cian Eléctrico */
-.banner-dots{color:#333;font-size:14px;margin:0 12px;animation:dotsBlink 1.5s ease-in-out infinite}
-@keyframes scrollBanner{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes dotsBlink{0%,100%{opacity:.2}50%{opacity:1}}
-
-/* CONTENEDOR HERO */
-.hero-section {
-    min-height: 100vh;
-    padding-top: 100px;
-    display:flex;flex-direction:column;align-items:center;justify-content: center;
-    position:relative;z-index:1;
-}
-
-/* TÍTULOS HERO (Cyberpunk Style) */
-.hero-titles {
-    text-align: center;
-    padding: 0 20px 40px;
-    z-index: 10;
-}
-.hero-titles h1 {
-    font-size: 36px;
-    font-weight: 900;
-    line-height: 1.1;
-    text-shadow: 0 0 15px rgba(111,66,193,0.5); /* Sombra Morada */
-    margin-bottom: 15px;
-}
-.hero-titles h1 span { 
-    color: #00f2fe; /* Cian Eléctrico */
-    text-shadow: 0 0 10px rgba(0,242,254,0.7);
-}
-.hero-titles p {
-    font-size: 16px;
-    color: #aaa;
-    font-weight: 400;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-/* EMOJIS (Ajustados para el contraste) */
-.floating-emoji{position:absolute;font-size:38px;animation:floatEmoji 6s ease-in-out infinite;z-index:1;filter:drop-shadow(0 0 8px rgba(111,66,193,0.6))}
-.emoji1{top:20%;left:8%;animation-delay:0s}
-.emoji2{top:30%;right:8%;animation-delay:2s}
-@keyframes floatEmoji{0%,100%{transform:translateY(0) rotate(0deg) scale(1);opacity:.6}50%{transform:translateY(-20px) rotate(5deg) scale(1.05);opacity:.9}}
-
-/* ─── iPHONE Y CHAT CSS (Nuevo Look Cyberpunk) ───────────────────────────────────── */
-@keyframes neonFlicker{0%{opacity:1;filter:brightness(1)}2%{opacity:0.7;filter:brightness(0.6)}4%{opacity:1;filter:brightness(1.1)}15%{opacity:.85;filter:brightness(.8)}16%{opacity:1;filter:brightness(1.2)}45%{opacity:1;filter:brightness(1)}50%{opacity:.4;filter:brightness(.3)}51%{opacity:1;filter:brightness(1.3)}52%{opacity:.5;filter:brightness(.4)}53%{opacity:1;filter:brightness(1.2)}80%{opacity:.9;filter:brightness(.9)}85%{opacity:1;filter:brightness(1.4)}95%{opacity:.8;filter:brightness(.7)}96%{opacity:1;filter:brightness(1.1)}100%{opacity:1;filter:brightness(1)}}
-.smartphone{width:300px;height:520px;background:#111;
-border:3px solid #00f2fe; /* Borde Cian Eléctrico */
-border-radius:35px;position:relative;z-index:10;box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px #00f2fe,0 0 30px 5px rgba(111,66,193,0.6);animation:phoneGlow 3s ease-in-out infinite,phoneSwing 6s ease-in-out infinite,neonFlicker 5s ease-in-out infinite;}
-@keyframes phoneGlow{0%,100%{box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px #00f2fe,0 0 30px 5px rgba(111,66,193,0.6)}50%{box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 15px 3px #00f2fe,0 0 45px 8px rgba(111,66,193,0.8)}}
-@keyframes phoneSwing{0%,100%{transform:perspective(1000px) rotateY(-3deg) rotateX(1deg)}50%{transform:perspective(1000px) rotateY(3deg) rotateX(1deg)}}
-
-.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:130px;height:22px;background:#111;border-radius:0 0 15px 15px;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 12px}
-.notch-time{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:#fff}
-.notch-cam{width:7px;height:7px;background:#000;border-radius:50%;border:1px solid #333}
-.screen{width:100%;height:100%;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;background:#0a0a0c}
-
-/* CHAT HEADER */
-.chat-header{background:linear-gradient(135deg,#6f42c1,#1a1a1d);height:65px;display:flex;align-items:center;padding:0 12px;gap:8px;position:relative;overflow:hidden;flex-shrink:0;padding-top:20px;border-bottom:1px solid #333}
-.avatar-wrap{position:relative;flex-shrink:0;z-index:2}
-.h-avatar{width:30px;height:30px;background:rgba(0,0,0,.5);border:2px solid #00f2fe;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.h-avatar svg{width:16px;height:16px;fill:#00f2fe}
-.h-info{z-index:2}
-.h-name{color:#fff;font-size:12px;font-weight:800;line-height:1;}
-.h-status{color:#00f2fe;font-size:9px;margin-top:2px;animation:statusBlink 1.5s steps(1) infinite;font-weight: 600;}
-@keyframes statusBlink{0%,100%{opacity:1}50%{opacity:.3}}
-
-/* AREA DE CHAT */
-.chat-area{flex:1;overflow:hidden;position:relative;background:#0a0a0c}
-.msgs{position:absolute;top:0;left:0;right:0;bottom:0;padding:10px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
-.bubble{display:inline-block;padding:8px 10px;border-radius:12px;font-size:11px;line-height:1.4;max-width:85%;box-shadow:0 2px 6px rgba(0,0,0,0.5)}
-.msg.bot .bubble{background:#1a1a1d;color:#e8e8e8;border-bottom-left-radius:3px;border:1px solid #333}
-.msg.user .bubble{background:#2AABEE;color:white;border-bottom-right-radius:3px;}
-.msg.bot .bubble strong{color:#00f2fe}
-.msg.user .bubble strong{color:#fff}
-
-/* HOME INDICATOR */
-.home-btn{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:100px;height:3px;background:rgba(255,255,255,0.15);border-radius:2px}
-
-/* ─── SECCIONES INFORMATIVAS (Homogéneas) ───────────────────────────────────── */
-.info-section {
-    width: 100%;
-    max-width: 500px;
-    padding: 40px 20px;
-    position: relative;
-    z-index: 10;
-    margin: 0 auto;
-}
-
-/* SECCIÓN MATEMÁTICA DEL DOLOR (Look Magenta Cyberpunk) */
-.math-box {
-    background: #111;
-    border: 1px solid #6f42c1; /* Borde Morado */
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.7), 0 0 15px rgba(111,66,193,0.3);
-}
-.math-box h2 {
-    font-size: 14px;
-    color: #aaa;
-    text-align: center;
-    margin-bottom: 18px;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-.cost-row {
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 15px;
-    padding: 10px 0;
-    border-bottom: 1px dashed #222;
-}
-.cost-row.bad { color: #888; }
-.cost-row.bad span { 
-    color: #ff00ff; /* Magenta Vibrante */
-    font-weight: bold; 
-    text-shadow: 0 0 5px rgba(255,0,255,0.5);
-}
-.cost-row.good { 
-    color: #fff; 
-    border-bottom: none; 
-    margin-top: 15px; 
-    padding-top: 20px; 
-    border-top: 2px solid #222;
-    font-size: 17px;
-}
-.cost-row.good span { 
-    color: #00f2fe; /* Cian Eléctrico */
-    font-weight: bold; 
-    text-shadow: 0 0 8px rgba(0,242,254,0.6);
-}
-.trial-text {
-    text-align: center;
-    font-size: 12px;
-    color: #6f42c1; /* Morado */
-    margin-top: 12px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-/* SECCIÓN PASOS */
-.steps-box h3 {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 25px;
-    color: #fff;
-}
-.step {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    background: rgba(255,255,255,0.02);
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid #1a1a1d;
-}
-.step-icon {
-    font-size: 20px;
-    background: #111;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: 1px solid #222;
-    color: #00f2fe; /* Cian */
-}
-.step-text { font-size: 14px; color: #aaa; line-height: 1.5; }
-.step-text strong { color: #fff; }
-
-/* SECCIÓN FAQ */
-.faq-box { margin-top: 40px; padding-top: 30px; border-top: 1px solid #1a1a1d;}
-.faq-box h3 { text-align: center; font-size: 16px; margin-bottom: 20px; color: #555; font-weight: 600;}
-.faq-item { margin-bottom: 18px; background: #111; padding: 15px; border-radius: 10px; border: 1px solid #1a1a1d;}
-.faq-q { font-size: 13px; font-weight: 700; color: #00f2fe; margin-bottom: 5px; } /* Cian */
-.faq-a { font-size: 12px; color: #888; line-height: 1.5; }
-
-/* ─── STICKY CTA BOTÓN (Homogeneizado) ───────────────────────────────────── */
-.sticky-cta-wrap {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background: linear-gradient(to top, rgba(10,10,12,1) 60%, rgba(10,10,12,0));
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Botón Telegram (Azul original + Borde Cian) */
-.btn-telegram {
-    background: linear-gradient(135deg,#2AABEE,#1a7bbf);
-    color: white;
-    text-decoration: none;
-    width: 100%;
-    max-width: 400px;
-    padding: 18px;
-    border-radius: 50px;
-    font-size: 15px;
-    font-weight: 800;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    border: 2px solid #00f2fe; /* Borde Cian Eléctrico */
-    animation: ctaPulse 2.5s infinite;
-    letter-spacing: 0.5px;
-}
-.btn-telegram svg { width: 18px; height: 18px; fill: white; }
-
-/* Subtext */
-.sub-cta {
-    color: #444;
-    font-size: 11px;
-    font-weight: 600;
-}
-
-@keyframes ctaPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(0,242,254,0.4); }
-    50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(0,242,254,0.7); }
-}
-</style>
-</head>
-<body>
-
-<div class="smog-wrap" id="smogWrap"></div>
-
-<div class="banner-led">
-  <div class="banner-content">
-    <span class="banner-text">MONITOREO CDMX</span><span class="banner-dots">●●●</span>
-    <span class="banner-text hl">AIreGPT: ON</span><span class="banner-dots">●●●</span>
-    <span class="banner-text">SENSORES SMAABILITY: ACTIVOS</span><span class="banner-dots">●●●</span>
-    <span class="banner-text hl">POWERED BY GPT-4</span><span class="banner-dots">●●●</span>
-    <span class="banner-text">5 DÍAS GRATIS</span><span class="banner-dots">●●●</span>
-    <span class="banner-text hl">EVITA MULTAS</span><span class="banner-dots">●●●</span>
-  </div>
-</div>
-
-<section class="hero-section">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIreGPT - AI Agent para CDMX</title>
   
-  <div class="hero-titles">
-    <h1>TU COPILOTO DE <span>IA</span></h1>
-    <p>Alertas exactas del Hoy No Circula, contingencia y clima directo en tu Telegram.</p>
-  </div>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Roboto+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <div class="floating-emoji emoji1">🚘</div>
-  <div class="floating-emoji emoji2">📱</div>
+  <style>
+    /* VARIABLES CYBERPUNK HOMOGENEIZADAS */
+    :root {
+      --bg-dark: #0a0a0c;
+      --bg-panel: #111111;
+      --cyan-neon: #00f2fe;
+      --purple-neon: #6f42c1;
+      --magenta-neon: #ff00ff;
+    }
 
-  <div class="smartphone" id="phone">
-    <div class="notch">
-      <span class="notch-time" id="notchTime"></span>
-      <div class="notch-cam"></div>
-    </div>
-    <div class="screen">
-      <div class="chat-header">
-        <div class="avatar-wrap">
-          <div class="h-avatar"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.98 4.23 13.07c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.836.944z"/></svg></div>
-        </div>
-        <div class="h-info">
-          <div class="h-name">AIreGPT</div>
-          <div class="h-status" id="headerStatus">🤖 ONLINE · GPT-4</div>
-        </div>
-      </div>
-      <div class="chat-area" id="chatArea">
-        <div class="msgs" id="msgContainer">
-          </div>
-      </div>
-    </div>
-    <div class="home-btn"></div>
-  </div>
+    body {
+      background-color: var(--bg-dark);
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      padding-bottom: 120px; /* Espacio para Sticky CTA */
+      overflow-x: hidden;
+    }
 
-</section>
+    /* SMOG TECH MORADO (Fondo) */
+    .smog-wrap{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+    .smog{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle,rgba(111,66,193,0.1) 0%,transparent 70%);animation:smogRise linear infinite;}
+    @keyframes smogRise{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:.5}100%{transform:translateY(-110vh) scale(2.5);opacity:0}}
 
-<section class="info-section">
+    /* ─── BANNER LED ANIMADO (INTACTO EN FORMA, COLORES HOMOGENEIZADOS) ─── */
+    .banner-led{width:100%;height:45px;background:#000;overflow:hidden;position:fixed;top:0;left:0;background-image:linear-gradient(90deg,#1a1a1d 2px,transparent 2px),linear-gradient(0deg,#1a1a1d 2px,transparent 2px);background-size:4px 4px;z-index:900;box-shadow:0 2px 10px rgba(0,0,0,0.5)}
+    .banner-content{position:absolute;top:0;left:0;height:100%;white-space:nowrap;display:flex;align-items:center;animation:scrollBanner 25s linear infinite}
+    .banner-text{font-family:'Roboto Mono',monospace;font-size:16px;font-weight:700;color:#ddd;letter-spacing:1px;text-transform:uppercase;padding:0 30px}
+    .banner-text.hl{color:var(--cyan-neon);font-weight: 800;}
+    .banner-dots{color:#333;font-size:14px;margin:0 12px;animation:dotsBlink 1.5s ease-in-out infinite}
+    @keyframes scrollBanner{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    @keyframes dotsBlink{0%,100%{opacity:.2}50%{opacity:1}}
+
+    /* ─── CELULAR CYBERPUNK (INTACTO EN CADENCIA, COLORES HOMOGENEIZADOS) ─── */
+    .smartphone{width:300px;height:520px;background:#111;border:3px solid var(--cyan-neon);border-radius:35px;position:relative;z-index:10;box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px var(--cyan-neon),0 0 30px 5px rgba(111,66,193,0.6);animation:phoneGlow 3s ease-in-out infinite,phoneSwing 6s ease-in-out infinite,neonFlicker 5s ease-in-out infinite; margin: 0 auto;}
+    @keyframes neonFlicker{0%{opacity:1;filter:brightness(1)}2%{opacity:0.7;filter:brightness(0.6)}4%{opacity:1;filter:brightness(1.1)}15%{opacity:.85;filter:brightness(.8)}16%{opacity:1;filter:brightness(1.2)}45%{opacity:1;filter:brightness(1)}50%{opacity:.4;filter:brightness(.3)}51%{opacity:1;filter:brightness(1.3)}52%{opacity:.5;filter:brightness(.4)}53%{opacity:1;filter:brightness(1.2)}80%{opacity:.9;filter:brightness(.9)}85%{opacity:1;filter:brightness(1.4)}95%{opacity:.8;filter:brightness(.7)}96%{opacity:1;filter:brightness(1.1)}100%{opacity:1;filter:brightness(1)}}
+    @keyframes phoneGlow{0%,100%{box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px var(--cyan-neon),0 0 30px 5px rgba(111,66,193,0.6)}50%{box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 15px 3px var(--cyan-neon),0 0 45px 8px rgba(111,66,193,0.8)}}
+    @keyframes phoneSwing{0%,100%{transform:perspective(1000px) rotateY(-3deg) rotateX(1deg)}50%{transform:perspective(1000px) rotateY(3deg) rotateX(1deg)}}
+
+    .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:130px;height:22px;background:#111;border-radius:0 0 15px 15px;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 12px}
+    .notch-time{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:#fff}
+    .notch-cam{width:7px;height:7px;background:#000;border-radius:50%;border:1px solid #333}
+    .screen{width:100%;height:100%;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;background:var(--bg-dark)}
     
-    <div class="math-box">
-        <h2>EL COSTO DE LA DESINFORMACIÓN</h2>
-        <div class="cost-row bad">❌ Multa HNC: <span>$3,267</span></div>
-        <div class="cost-row bad">❌ Corralón: <span>$1,500</span></div>
-        <div class="cost-row good">✅ AIreGPT: <span>$49 / mes</span></div>
-        <div class="trial-text">TUS PRIMEROS 5 DÍAS SON GRATIS (SIN TARJETA)</div>
+    .chat-header{background:linear-gradient(135deg,var(--purple-neon),#1a1a1d);height:65px;display:flex;align-items:center;padding:0 12px;gap:8px;position:relative;flex-shrink:0;padding-top:20px;border-bottom:1px solid #333}
+    .h-avatar{width:30px;height:30px;background:rgba(0,0,0,.5);border:2px solid var(--cyan-neon);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .h-avatar svg{width:16px;height:16px;fill:var(--cyan-neon)}
+    .h-name{color:#fff;font-size:12px;font-weight:800;line-height:1;}
+    .h-status{color:var(--cyan-neon);font-size:9px;margin-top:2px;animation:statusBlink 1.5s steps(1) infinite;font-weight: 600;}
+    @keyframes statusBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+    .chat-area{flex:1;overflow:hidden;position:relative;background:var(--bg-dark)}
+    .msgs{position:absolute;top:0;left:0;right:0;bottom:0;padding:10px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+    .bubble{display:inline-block;padding:8px 10px;border-radius:12px;font-size:11px;line-height:1.4;max-width:85%;box-shadow:0 2px 6px rgba(0,0,0,0.5)}
+    .msg{animation:fadeIn .45s ease forwards}
+    .msg.bot .bubble{background:#1a1a1d;color:#e8e8e8;border-bottom-left-radius:3px;border:1px solid #333}
+    .msg.user{text-align:right}
+    .msg.user .bubble{background:#2AABEE;color:white;border-bottom-right-radius:3px;}
+    .msg.bot .bubble strong{color:var(--cyan-neon)}
+    .bname{font-size:8px;color:var(--cyan-neon);font-weight:800;margin-bottom:2px;letter-spacing:.5px;text-transform:uppercase}
+    .mtime{font-size:8px;color:rgba(255,255,255,.3);margin-top:2px;display:block}
+    .paloma{font-size:8px;color:rgba(255,255,255,.35);margin-top:2px;display:block;text-align:right}
+    .home-btn{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:100px;height:3px;background:rgba(255,255,255,0.15);border-radius:2px}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    /* STICKY CTA */
+    .sticky-cta-wrap {
+      background: linear-gradient(to top, rgba(10,10,12,1) 60%, rgba(10,10,12,0));
+    }
+    .btn-telegram {
+      background: linear-gradient(135deg,#2AABEE,#1a7bbf);
+      border: 2px solid var(--cyan-neon);
+      animation: ctaPulse 2.5s infinite;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    @keyframes ctaPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(0,242,254,0.4); }
+      50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(0,242,254,0.7); }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#00f2fe] selection:text-black">
+
+  <div class="smog-wrap" id="smogWrap"></div>
+
+  <div class="banner-led">
+    <div class="banner-content">
+      <span class="banner-text">MONITOREO CDMX</span><span class="banner-dots">●●●</span>
+      <span class="banner-text hl">AIreGPT: ON</span><span class="banner-dots">●●●</span>
+      <span class="banner-text">SENSORES SMAABILITY: ACTIVOS</span><span class="banner-dots">●●●</span>
+      <span class="banner-text hl">POWERED BY GPT-4</span><span class="banner-dots">●●●</span>
+      <span class="banner-text">5 DÍAS GRATIS</span><span class="banner-dots">●●●</span>
+      <span class="banner-text hl">EVITA MULTAS</span><span class="banner-dots">●●●</span>
     </div>
+  </div>
 
-    <div class="steps-box">
-        <h3>EN 3 PASOS ESTÁS PROTEGIDO:</h3>
-        <div class="step">
-            <div class="step-icon">👆</div>
-            <div class="step-text">Toca el botón azul de abajo y abre Telegram.</div>
-        </div>
-        <div class="step">
-            <div class="step-icon">▶️</div>
-            <div class="step-text">Presiona <strong>Iniciar</strong> (o Start) en el chat.</div>
-        </div>
-        <div class="step">
-            <div class="step-icon">📍</div>
-            <div class="step-text">Mándale tu ubicación al bot y relájate.</div>
-        </div>
-    </div>
+  <main class="relative z-10 flex flex-col items-center w-full">
+    
+    <section class="min-h-screen w-full flex flex-col items-center justify-center pt-24 pb-12 px-4">
+      
+      <div class="text-center mb-10 max-w-lg">
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4" style="text-shadow: 0 0 15px rgba(111,66,193,0.5);">
+          TU COPILOTO DE <span style="color: var(--cyan-neon); text-shadow: 0 0 10px rgba(0,242,254,0.7);">IA</span>
+        </h1>
+        <p class="text-gray-400 text-base md:text-lg">
+          Alertas exactas del Hoy No Circula, contingencia y clima directo en tu Telegram.
+        </p>
+      </div>
 
-    <div class="faq-box">
-        <h3>PREGUNTAS FRECUENTES</h3>
-        <div class="faq-item">
-            <div class="faq-q">🛡️ ¿Pide tarjeta para la prueba gratis?</div>
-            <div class="faq-a">No. Pruébalo 5 días sin compromisos y sin dar datos bancarios.</div>
+      <div class="smartphone" id="phone">
+        <div class="notch">
+          <span class="notch-time" id="notchTime"></span>
+          <div class="notch-cam"></div>
         </div>
-        <div class="faq-item">
-            <div class="faq-q">📱 ¿Ocupa espacio en mi teléfono?</div>
-            <div class="faq-a">Cero. AIreGPT vive dentro de tu Telegram, no descargas nada extra.</div>
+        <div class="screen">
+          <div class="chat-header">
+            <div class="avatar-wrap">
+              <div class="h-avatar"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.98 4.23 13.07c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.836.944z"/></svg></div>
+            </div>
+            <div class="h-info">
+              <div class="h-name">AIreGPT</div>
+              <div class="h-status">🤖 ONLINE · GPT-4</div>
+            </div>
+          </div>
+          <div class="chat-area" id="chatArea">
+            <div class="msgs" id="msgContainer">
+              </div>
+          </div>
         </div>
-        <div class="faq-item">
-            <div class="faq-q">❌ ¿Es difícil cancelar?</div>
-            <div class="faq-a">Para nada. Solo escribe "Cancelar" en el chat y se detiene el servicio.</div>
-        </div>
-    </div>
+        <div class="home-btn"></div>
+      </div>
+    </section>
 
-</section>
+    <section class="w-full max-w-md px-4 py-8 flex flex-col gap-8">
+      
+      <div class="bg-[#111111] border border-[#6f42c1] rounded-2xl p-6 shadow-2xl" style="box-shadow: 0 10px 40px rgba(0,0,0,0.7), 0 0 15px rgba(111,66,193,0.3);">
+        <h2 class="text-gray-400 text-center font-semibold tracking-wider text-sm mb-5">EL COSTO DE LA DESINFORMACIÓN</h2>
+        
+        <div class="flex justify-between items-center py-3 border-b border-dashed border-gray-800">
+          <span class="text-gray-500 font-mono">❌ Multa HNC:</span>
+          <span class="font-mono font-bold text-[#ff00ff]" style="text-shadow: 0 0 5px rgba(255,0,255,0.5);">$3,267</span>
+        </div>
+        <div class="flex justify-between items-center py-3 border-b border-dashed border-gray-800">
+          <span class="text-gray-500 font-mono">❌ Corralón:</span>
+          <span class="font-mono font-bold text-[#ff00ff]" style="text-shadow: 0 0 5px rgba(255,0,255,0.5);">$1,500</span>
+        </div>
+        <div class="flex justify-between items-center py-4 mt-2 border-t-2 border-gray-800">
+          <span class="text-white font-mono text-lg">✅ AIreGPT:</span>
+          <span class="font-mono font-bold text-xl text-[#00f2fe]" style="text-shadow: 0 0 8px rgba(0,242,254,0.6);">$49 / mes</span>
+        </div>
+        
+        <p class="text-center text-[#6f42c1] font-bold text-xs tracking-wide mt-4">
+          TUS PRIMEROS 5 DÍAS SON GRATIS (SIN TARJETA)
+        </p>
+      </div>
 
-<div class="sticky-cta-wrap">
-    <a href="https://t.me/airegptcdmx_bot" class="btn-telegram">
-        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.98 4.23 13.07c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.836.944z"/></svg>
-        PROBAR 5 DÍAS GRATIS EN TELEGRAM
+      <div>
+        <h3 class="text-center text-white text-lg font-bold mb-6">EN 3 PASOS ESTÁS PROTEGIDO:</h3>
+        
+        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 mb-3">
+          <div class="flex-shrink-0 w-12 h-12 bg-black border border-gray-800 rounded-full flex items-center justify-center text-[#00f2fe] text-xl">👆</div>
+          <p class="text-gray-300 text-sm">Toca el botón azul de abajo y abre Telegram.</p>
+        </div>
+        
+        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5 mb-3">
+          <div class="flex-shrink-0 w-12 h-12 bg-black border border-gray-800 rounded-full flex items-center justify-center text-[#00f2fe] text-xl">▶️</div>
+          <p class="text-gray-300 text-sm">Presiona <strong class="text-white">Iniciar</strong> (o Start) en el chat.</p>
+        </div>
+        
+        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
+          <div class="flex-shrink-0 w-12 h-12 bg-black border border-gray-800 rounded-full flex items-center justify-center text-[#00f2fe] text-xl">📍</div>
+          <p class="text-gray-300 text-sm">Mándale tu ubicación al bot y relájate.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 mb-10">
+        <h3 class="text-center text-gray-500 text-base font-semibold mb-6">PREGUNTAS FRECUENTES</h3>
+        
+        <div class="bg-[#111] p-4 rounded-xl border border-gray-800 mb-4">
+          <p class="text-[#00f2fe] font-bold text-sm mb-1">🛡️ ¿Pide tarjeta para la prueba gratis?</p>
+          <p class="text-gray-500 text-xs leading-relaxed">No. Pruébalo 5 días sin compromisos y sin dar datos bancarios.</p>
+        </div>
+
+        <div class="bg-[#111] p-4 rounded-xl border border-gray-800 mb-4">
+          <p class="text-[#00f2fe] font-bold text-sm mb-1">📍 ¿Funciona en mi ciudad?</p>
+          <p class="text-gray-500 text-xs leading-relaxed">AIreGPT actualmente solo está disponible para la <strong class="text-gray-400">CDMX y Zona Metropolitana</strong>. (El Estado de México está incluido en zonas colindantes).</p>
+        </div>
+        
+        <div class="bg-[#111] p-4 rounded-xl border border-gray-800">
+          <p class="text-[#00f2fe] font-bold text-sm mb-1">❌ ¿Es difícil cancelar?</p>
+          <p class="text-gray-500 text-xs leading-relaxed">Para nada. Solo escribe "Cancelar" en el chat y se detiene el servicio.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="w-full text-center py-6 border-t border-gray-800 bg-[#0a0a0c] relative z-10 pb-10">
+      <div class="flex flex-col items-center gap-4">
+        
+        <div class="flex gap-6 items-center">
+          <a href="https://x.com/SmabilityMX" target="_blank" class="text-gray-500 hover:text-[#00f2fe] transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/company/smability" target="_blank" class="text-gray-500 hover:text-[#00f2fe] transition-colors">
+            <i class="fab fa-linkedin text-xl"></i>
+          </a>
+          <a href="https://www.instagram.com/airegpt.ai/" target="_blank" class="text-gray-500 hover:text-[#00f2fe] transition-colors">
+            <i class="fab fa-instagram text-xl"></i>
+          </a>
+          <a href="https://www.tiktok.com/@airegpt?_t=ZS-8yFl93jwPHk&_r=1" target="_blank" class="text-gray-500 hover:text-[#00f2fe] transition-colors">
+            <i class="fab fa-tiktok text-xl"></i>
+          </a>
+        </div>
+        
+        <p class="text-xs text-gray-500">
+          Crafted with amor ❤️ from Mexico City to you! <br>
+          Desarrollado por <a href="https://www.smability.io" target="_blank" class="text-[#00f2fe] hover:underline">Smability</a> &copy; 2026
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <div class="fixed bottom-0 left-0 w-full p-4 flex flex-col items-center gap-2 z-50 sticky-cta-wrap">
+    <a href="https://t.me/airegptcdmx_bot" class="btn-telegram w-full max-w-md py-4 rounded-full text-white font-extrabold text-sm md:text-base flex justify-center items-center gap-2">
+      <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.98 4.23 13.07c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.836.944z"/></svg>
+      PROBAR 5 DÍAS GRATIS EN TELEGRAM
     </a>
-    <div class="sub-cta">smability.io</div>
-</div>
+    <span class="text-gray-500 text-[10px] font-semibold tracking-wider">smability.io</span>
+  </div>
 
-<script>
-const msgCont  = document.getElementById('msgContainer');
-const chatArea = document.getElementById('chatArea');
+  <script>
+    const msgCont  = document.getElementById('msgContainer');
+    const chatArea = document.getElementById('chatArea');
 
-/* CLOCK (En el celular) */
-function updateClock(){
-  const n=new Date();
-  const t=`${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
-  const timeEl = document.getElementById('notchTime');
-  if(timeEl) timeEl.textContent=t;
-}
-updateClock(); setInterval(updateClock,10000);
+    function updateClock(){
+      const n=new Date();
+      const t=`${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
+      const timeEl = document.getElementById('notchTime');
+      if(timeEl) timeEl.textContent=t;
+    }
+    updateClock(); setInterval(updateClock,10000);
 
-/* SMOG TECH MORADO */
-const sw=document.getElementById('smogWrap');
-for(let i=0;i<15;i++){ /* Un poco menos densas */
-  const d=document.createElement('div'); d.className='smog';
-  const s=100+Math.random()*250;
-  d.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${15+Math.random()*20}s;animation-delay:${Math.random()*10}s`;
-  sw.appendChild(d);
-}
+    const sw=document.getElementById('smogWrap');
+    for(let i=0;i<15;i++){ 
+      const d=document.createElement('div'); d.className='smog';
+      const s=100+Math.random()*250;
+      d.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${15+Math.random()*20}s;animation-delay:${Math.random()*10}s`;
+      sw.appendChild(d);
+    }
 
-/* FLUJO DEL CHAT (Simulando conversación Tech) */
-const msgs=[
-  {side:'bot',text:'👋 ¡Hola! Soy <strong>AIreGPT</strong>, tu nuevo copiloto. Mándame tu ubicación para empezar.'},
-  {side:'user',text:'📍 [Ubicación compartida: Condesa]'},
-  {side:'bot',text:'🤖 Ubicación recibida: <strong>Condesa</strong>.<br>Analizando sensores <strong>Smability</strong>...'},
-  {side:'bot',text:'🚘 <strong>HOY NO CIRCULAS:</strong> Placas 5 y 6 (Rojo).<br>Alertas activas para tu zona. Relájate.'}
-];
+    const msgs=[
+      {side:'bot',text:'👋 ¡Hola! Soy <strong>AIreGPT</strong>, tu nuevo copiloto. Mándame tu ubicación para empezar.'},
+      {side:'user',text:'📍 [Ubicación compartida: Condesa]'},
+      {side:'bot',text:'🤖 Ubicación recibida: <strong>Condesa</strong>.<br>Analizando sensores <strong>Smability</strong>...'},
+      {side:'bot',text:'🚘 <strong>HOY NO CIRCULAS:</strong> Placas 5 y 6 (Rojo).<br>Alertas activas para tu zona. Relájate.'}
+    ];
 
-let msgIdx=0;
-const PAUSE=2800; /* Un poco más lento para lectura */
+    let msgIdx=0;
+    const PAUSE=2800; 
 
-function relTime(off){
-  const n=new Date(); n.setMinutes(n.getMinutes()+parseInt(off||0));
-  return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
-}
+    function relTime(off){
+      const n=new Date(); n.setMinutes(n.getMinutes()+parseInt(off||0));
+      return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
+    }
 
-function buildMsg(m,idx){
-  const div=document.createElement('div'); div.className=`msg ${m.side}`;
-  const ts=relTime(idx);
-  div.innerHTML=m.side==='bot'
-    ?`<div class="bname">AIreGPT 🤖</div><div class="bubble">${m.text}</div><span class="mtime">${ts}</span>`
-    :`<div class="bubble">${m.text}</div><span class="paloma">✓✓ ${ts}</span>`;
-  return div;
-}
+    function buildMsg(m,idx){
+      const div=document.createElement('div'); div.className=`msg ${m.side}`;
+      const ts=relTime(idx);
+      div.innerHTML=m.side==='bot'
+        ?`<div class="bname">AIreGPT 🤖</div><div class="bubble">${m.text}</div><span class="mtime">${ts}</span>`
+        :`<div class="bubble">${m.text}</div><span class="paloma">✓✓ ${ts}</span>`;
+      return div;
+    }
 
-function next(){
-  if(msgIdx>=msgs.length){
-    setTimeout(()=>{
-      msgCont.innerHTML='';
-      msgIdx=0; setTimeout(next,1000);
-    },5000); return; /* Pausa final antes de reiniciar */
-  }
-  const m=msgs[msgIdx], idx=msgIdx;
-  
-  setTimeout(()=>{
-    const el=buildMsg(m,idx);
-    msgCont.appendChild(el);
-    chatArea.scrollTop=chatArea.scrollHeight;
-    msgIdx++;
-    setTimeout(next, PAUSE);
-  }, m.side==='bot'?800:1500); /* Delay simulado de escritura user/bot */
-}
-setTimeout(next,1500);
-</script>
-
+    function next(){
+      if(msgIdx>=msgs.length){
+        setTimeout(()=>{
+          msgCont.innerHTML='';
+          msgIdx=0; setTimeout(next,1000);
+        },5000); return; 
+      }
+      const m=msgs[msgIdx], idx=msgIdx;
+      
+      setTimeout(()=>{
+        const el=buildMsg(m,idx);
+        msgCont.appendChild(el);
+        chatArea.scrollTop=chatArea.scrollHeight;
+        msgIdx++;
+        setTimeout(next, PAUSE);
+      }, m.side==='bot'?800:1500); 
+    }
+    setTimeout(next,1500);
+  </script>
 </body>
 </html>
