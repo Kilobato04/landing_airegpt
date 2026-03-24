@@ -3,284 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIreGPT – Contingencia Fase I</title>
+<title>AIreGPT – Tu Copiloto de IA para CDMX</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Roboto+Mono:wght@400;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-background:radial-gradient(circle at 30% 20%,#FF4444 0%,#C0392B 30%,#8B0000 60%,#111 100%);
-background-size:400% 400%;
-background-attachment: fixed; /* Mantiene el fondo estático al hacer scroll */
-animation:gradientShift 8s ease infinite;
+/* Fondo Negro Carbón Profundo Homogéneo */
+background-color: #0a0a0c;
+background-attachment: fixed;
 font-family:'Poppins',sans-serif;
 overflow-x:hidden;position:relative;
 color: #fff;
-padding-bottom: 100px; /* Espacio para el botón sticky */
+padding-bottom: 120px; /* Espacio para el botón sticky */
 }
-@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
-/* SMOG */
+/* SMOG TECH (Nubes moradas sutiles) */
 .smog-wrap{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.smog{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle,rgba(200,50,50,0.15) 0%,transparent 70%);animation:smogRise linear infinite}
+.smog{position:absolute;bottom:-60px;border-radius:50%;
+background:radial-gradient(circle,rgba(111,66,193,0.12) 0%,transparent 70%); /* Morado Neón */
+animation:smogRise linear infinite}
 @keyframes smogRise{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:.5}100%{transform:translateY(-110vh) scale(2.5);opacity:0}}
 
-/* BANNER LED */
-.banner-led{width:100%;height:45px;background:#000;overflow:hidden;position:fixed;top:0;left:0;background-image:linear-gradient(90deg,#333 2px,transparent 2px),linear-gradient(0deg,#333 2px,transparent 2px);background-size:4px 4px;z-index:900;box-shadow:0 2px 10px rgba(0,0,0,0.5)}
-.banner-content{position:absolute;top:0;left:0;height:100%;white-space:nowrap;display:flex;align-items:center;animation:scrollBanner 22s linear infinite}
-.banner-text{font-family:'Roboto Mono',monospace;font-size:18px;font-weight:700;color:#FF6B6B;letter-spacing:2px;text-transform:uppercase;padding:0 40px}
-.banner-text.hl{background:#FF3B30;color:#fff;padding:5px 16px;border-radius:3px;animation:redPulse 1s ease-in-out infinite}
-@keyframes redPulse{0%,100%{background:#FF3B30;box-shadow:0 0 8px rgba(255,59,48,.6)}50%{background:#ff6b6b;box-shadow:0 0 18px rgba(255,59,48,1)}}
-.banner-dots{color:#FF6B6B;font-size:14px;margin:0 16px;animation:dotsBlink 1s ease-in-out infinite}
+/* BANNER LED (Acoplado a la nueva paleta) */
+.banner-led{width:100%;height:45px;background:#000;overflow:hidden;position:fixed;top:0;left:0;background-image:linear-gradient(90deg,#1a1a1d 2px,transparent 2px),linear-gradient(0deg,#1a1a1d 2px,transparent 2px);background-size:4px 4px;z-index:900;box-shadow:0 2px 10px rgba(0,0,0,0.5)}
+.banner-content{position:absolute;top:0;left:0;height:100%;white-space:nowrap;display:flex;align-items:center;animation:scrollBanner 25s linear infinite}
+.banner-text{font-family:'Roboto Mono',monospace;font-size:16px;font-weight:700;color:#ddd;letter-spacing:1px;text-transform:uppercase;padding:0 30px}
+.banner-text.hl{color:#00f2fe;font-weight: 800;} /* Cian Eléctrico */
+.banner-dots{color:#333;font-size:14px;margin:0 12px;animation:dotsBlink 1.5s ease-in-out infinite}
 @keyframes scrollBanner{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes dotsBlink{0%,100%{opacity:.2}50%{opacity:1}}
 
-/* CONTENEDOR HERO (Pantalla 1) */
+/* CONTENEDOR HERO */
 .hero-section {
     min-height: 100vh;
-    padding-top: 80px;
+    padding-top: 100px;
     display:flex;flex-direction:column;align-items:center;justify-content: center;
     position:relative;z-index:1;
 }
 
-/* TÍTULOS HERO */
+/* TÍTULOS HERO (Cyberpunk Style) */
 .hero-titles {
     text-align: center;
-    padding: 0 20px 30px;
+    padding: 0 20px 40px;
     z-index: 10;
 }
 .hero-titles h1 {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 900;
     line-height: 1.1;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(111,66,193,0.5); /* Sombra Morada */
+    margin-bottom: 15px;
 }
-.hero-titles h1 span { color: #FFE600; }
+.hero-titles h1 span { 
+    color: #00f2fe; /* Cian Eléctrico */
+    text-shadow: 0 0 10px rgba(0,242,254,0.7);
+}
 .hero-titles p {
-    font-size: 15px;
-    color: #e0e0e0;
+    font-size: 16px;
+    color: #aaa;
     font-weight: 400;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-/* FASE BADGE (Ajustado) */
-.fase-badge{position:absolute;top:90px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#FF3B30,#c0392b);border:2px solid #fff;border-radius:12px;padding:6px 14px;z-index:600;display:flex;align-items:center;gap:8px;box-shadow:0 0 20px rgba(255,59,48,.8);animation:fasePulse 1s ease-in-out infinite; width: fit-content; margin-bottom: 20px;}
-@keyframes fasePulse{0%,100%{box-shadow:0 0 20px rgba(255,59,48,.8)}50%{box-shadow:0 0 40px rgba(255,59,48,1)}}
-.fase-icon{font-size:14px}
-.fase-text{font-size:10px;font-weight:800;color:#fff;letter-spacing:1px;line-height:1.2}
-.fase-sub{font-size:9px;color:rgba(255,255,255,.75);font-weight:600}
+/* EMOJIS (Ajustados para el contraste) */
+.floating-emoji{position:absolute;font-size:38px;animation:floatEmoji 6s ease-in-out infinite;z-index:1;filter:drop-shadow(0 0 8px rgba(111,66,193,0.6))}
+.emoji1{top:20%;left:8%;animation-delay:0s}
+.emoji2{top:30%;right:8%;animation-delay:2s}
+@keyframes floatEmoji{0%,100%{transform:translateY(0) rotate(0deg) scale(1);opacity:.6}50%{transform:translateY(-20px) rotate(5deg) scale(1.05);opacity:.9}}
 
-/* EMOJIS */
-.floating-emoji{position:absolute;font-size:38px;animation:floatEmoji 6s ease-in-out infinite;z-index:1;filter:drop-shadow(2px 2px 6px rgba(0,0,0,.8))}
-.emoji1{top:20%;left:5%;animation-delay:0s}
-.emoji2{top:30%;right:5%;animation-delay:2s}
-@keyframes floatEmoji{0%,100%{transform:translateY(0) rotate(0deg) scale(1);opacity:.8}50%{transform:translateY(-28px) rotate(8deg) scale(1.1);opacity:1}}
-
-/* ─── iPHONE Y CHAT CSS (Sin modificar) ───────────────────────────────────── */
+/* ─── iPHONE Y CHAT CSS (Nuevo Look Cyberpunk) ───────────────────────────────────── */
 @keyframes neonFlicker{0%{opacity:1;filter:brightness(1)}2%{opacity:0.7;filter:brightness(0.6)}4%{opacity:1;filter:brightness(1.1)}15%{opacity:.85;filter:brightness(.8)}16%{opacity:1;filter:brightness(1.2)}45%{opacity:1;filter:brightness(1)}50%{opacity:.4;filter:brightness(.3)}51%{opacity:1;filter:brightness(1.3)}52%{opacity:.5;filter:brightness(.4)}53%{opacity:1;filter:brightness(1.2)}80%{opacity:.9;filter:brightness(.9)}85%{opacity:1;filter:brightness(1.4)}95%{opacity:.8;filter:brightness(.7)}96%{opacity:1;filter:brightness(1.1)}100%{opacity:1;filter:brightness(1)}}
-.smartphone{width:320px;height:550px;background:linear-gradient(160deg,#1c1c1e,#2c2c2e);border:3px solid #FFE600;border-radius:35px;position:relative;z-index:10;box-shadow:0 0 0 1px #3a3a3c,0 30px 80px rgba(0,0,0,.7),0 0 6px 2px #FFE600,0 0 18px 5px #FFD700,0 0 45px 10px rgba(255,214,0,.55),0 0 90px 20px rgba(255,200,0,.28),0 0 80px rgba(255,59,48,.3);animation:phoneGlow 2s ease-in-out infinite,phoneSwing 5s ease-in-out infinite,neonFlicker 4.5s ease-in-out infinite;}
-@keyframes phoneGlow{0%,100%{box-shadow:0 0 0 1px #3a3a3c,0 30px 80px rgba(0,0,0,.7),0 0 6px 2px #FFE600,0 0 18px 5px #FFD700,0 0 45px 10px rgba(255,214,0,.5),0 0 90px 20px rgba(255,200,0,.22),0 0 80px rgba(255,59,48,.25)}50%{box-shadow:0 0 0 1px #3a3a3c,0 30px 80px rgba(0,0,0,.7),0 0 8px 3px #FFE600,0 0 24px 7px #FFD700,0 0 60px 14px rgba(255,214,0,.7),0 0 110px 28px rgba(255,200,0,.38),0 0 100px rgba(255,59,48,.45)}}
-@keyframes phoneSwing{0%,100%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateY(0) rotateZ(0)}25%{transform:perspective(1000px) rotateY(-8deg) rotateX(2deg) translateY(-12px) rotateZ(-2deg)}50%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateY(0) rotateZ(0)}75%{transform:perspective(1000px) rotateY(-2deg) rotateX(2deg) translateY(12px) rotateZ(2deg)}}
-@keyframes alertShake{0%,100%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateX(0)}15%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateX(-6px)}30%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateX(6px)}45%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateX(-5px)}60%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateX(5px)}75%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateX(-3px)}90%{transform:perspective(1000px) rotateY(-5deg) rotateX(2deg) translateX(3px)}}
-.phone-shake{animation:alertShake .55s ease !important}
-.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:25px;background:#1c1c1e;border-radius:0 0 15px 15px;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 12px}
+.smartphone{width:300px;height:520px;background:#111;
+border:3px solid #00f2fe; /* Borde Cian Eléctrico */
+border-radius:35px;position:relative;z-index:10;box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px #00f2fe,0 0 30px 5px rgba(111,66,193,0.6);animation:phoneGlow 3s ease-in-out infinite,phoneSwing 6s ease-in-out infinite,neonFlicker 5s ease-in-out infinite;}
+@keyframes phoneGlow{0%,100%{box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px #00f2fe,0 0 30px 5px rgba(111,66,193,0.6)}50%{box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 15px 3px #00f2fe,0 0 45px 8px rgba(111,66,193,0.8)}}
+@keyframes phoneSwing{0%,100%{transform:perspective(1000px) rotateY(-3deg) rotateX(1deg)}50%{transform:perspective(1000px) rotateY(3deg) rotateX(1deg)}}
+
+.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:130px;height:22px;background:#111;border-radius:0 0 15px 15px;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:0 12px}
 .notch-time{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;color:#fff}
-.notch-cam{width:8px;height:8px;background:#111;border-radius:50%;border:1px solid #333}
-.screen{width:100%;height:100%;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;background:#17212b}
-.chat-header{background:linear-gradient(135deg,#FF3B30,#c0392b);height:70px;display:flex;align-items:center;padding:0 12px;gap:8px;position:relative;overflow:hidden;flex-shrink:0;padding-top:25px}
-.chat-header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent,rgba(255,255,255,.2),transparent);animation:headerShine 2.5s ease-in-out infinite}
-@keyframes headerShine{0%{transform:translateX(-100%) translateY(-100%) rotate(45deg)}50%{transform:translateX(100%) translateY(100%) rotate(45deg)}100%{transform:translateX(200%) translateY(200%) rotate(45deg)}}
+.notch-cam{width:7px;height:7px;background:#000;border-radius:50%;border:1px solid #333}
+.screen{width:100%;height:100%;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;background:#0a0a0c}
+
+/* CHAT HEADER */
+.chat-header{background:linear-gradient(135deg,#6f42c1,#1a1a1d);height:65px;display:flex;align-items:center;padding:0 12px;gap:8px;position:relative;overflow:hidden;flex-shrink:0;padding-top:20px;border-bottom:1px solid #333}
 .avatar-wrap{position:relative;flex-shrink:0;z-index:2}
-.h-avatar{width:32px;height:32px;background:rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.7);border-radius:50%;display:flex;align-items:center;justify-content:center}
-.h-avatar svg{width:16px;height:16px;fill:white}
-.notif-badge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:#fff;border:2px solid #FF3B30;border-radius:50%;font-size:8px;font-weight:800;color:#FF3B30;display:flex;align-items:center;justify-content:center;z-index:5}
+.h-avatar{width:30px;height:30px;background:rgba(0,0,0,.5);border:2px solid #00f2fe;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.h-avatar svg{width:16px;height:16px;fill:#00f2fe}
 .h-info{z-index:2}
-.h-name{color:#fff;font-size:12px;font-weight:800;line-height:1;text-shadow:1px 1px 3px rgba(0,0,0,.4)}
-.h-status{color:rgba(255,255,255,.85);font-size:9px;margin-top:2px;animation:statusBlink 1s steps(1) infinite}
-@keyframes statusBlink{0%,100%{opacity:1}50%{opacity:.4}}
-.chat-area{flex:1;overflow:hidden;position:relative;background:#17212b}
+.h-name{color:#fff;font-size:12px;font-weight:800;line-height:1;}
+.h-status{color:#00f2fe;font-size:9px;margin-top:2px;animation:statusBlink 1.5s steps(1) infinite;font-weight: 600;}
+@keyframes statusBlink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* AREA DE CHAT */
+.chat-area{flex:1;overflow:hidden;position:relative;background:#0a0a0c}
 .msgs{position:absolute;top:0;left:0;right:0;bottom:0;padding:10px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
-.msg{opacity:0;transform:translateY(16px);animation:fadeIn .45s ease forwards}
-.msg.user{text-align:right}
-@keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
-.bubble{display:inline-block;padding:8px 10px;border-radius:12px;font-size:11px;line-height:1.4;max-width:85%;box-shadow:0 2px 6px rgba(0,0,0,.4)}
-.msg.bot .bubble{background:#2b2b2b;color:#e8e8e8;border-bottom-left-radius:3px;border:1px solid #444}
-.msg.user .bubble{background:#2b5278;color:white;border-bottom-right-radius:3px;border:1px solid #3a6a99}
-.msg.bot .bubble strong{color:#ff9999}
-.msg.alert .bubble{background:linear-gradient(135deg,#3a1010,#500000);border-color:#FF3B30;box-shadow:0 2px 12px rgba(255,59,48,.5)}
-.msg.alert .bubble strong{color:#FF6B6B}
-.msg.hl .bubble{background:linear-gradient(135deg,#1a3a5c,#1e4d7a);border-color:#2AABEE;box-shadow:0 2px 10px rgba(42,171,238,.3)}
-.msg.hl .bubble strong{color:#00fbff}
-.msg.cta .bubble{background:linear-gradient(135deg,#1a2a00,#223a00);border:2px solid #FFD700;animation:ctaFlash .5s ease-in-out infinite}
-@keyframes ctaFlash{0%,100%{border-color:#FFD700;box-shadow:0 0 12px rgba(255,215,0,.5)}50%{border-color:#fff;box-shadow:0 0 20px rgba(255,215,0,.9)}}
-.msg.cta .bubble strong{color:#FFD700}
-.handle{display:inline-block;background:#FFD700;color:#000;font-weight:800;border-radius:5px;padding:2px 6px;margin-top:4px;font-size:10px}
-.bname{font-size:8px;color:#FF6B6B;font-weight:800;margin-bottom:2px;letter-spacing:.5px;text-transform:uppercase}
-.bname.blue{color:#2AABEE}
-.bname.gold{color:#FFD700}
-.mtime{font-size:8px;color:rgba(255,255,255,.3);margin-top:2px;display:block}
-.paloma{font-size:8px;color:rgba(255,255,255,.35);margin-top:2px;display:block;text-align:right}
-.typing-wrap{display:none;align-items:center;gap:4px;padding:6px 10px;background:#2b2b2b;border-radius:12px;border-bottom-left-radius:3px;width:fit-content;border:1px solid #444;margin-top:4px}
-.typing-wrap span{width:5px;height:5px;background:#FF6B6B;border-radius:50%;animation:bounce 1.2s infinite}
-.typing-wrap span:nth-child(2){animation-delay:.2s}
-.typing-wrap span:nth-child(3){animation-delay:.4s}
-@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+.bubble{display:inline-block;padding:8px 10px;border-radius:12px;font-size:11px;line-height:1.4;max-width:85%;box-shadow:0 2px 6px rgba(0,0,0,0.5)}
+.msg.bot .bubble{background:#1a1a1d;color:#e8e8e8;border-bottom-left-radius:3px;border:1px solid #333}
+.msg.user .bubble{background:#2AABEE;color:white;border-bottom-right-radius:3px;}
+.msg.bot .bubble strong{color:#00f2fe}
+.msg.user .bubble strong{color:#fff}
 
-/* PUSH Y MULTA CSS (Sin modificar) */
-.push-notif{position:absolute;top:30px;left:6px;right:6px;background:rgba(20,20,22,0.97);border-radius:12px;padding:8px 10px;z-index:50;display:flex;align-items:flex-start;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,.7),0 0 0 1px rgba(255,59,48,.3);backdrop-filter:blur(10px);transform:translateY(-90px);opacity:0;transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .35s ease}
-.push-notif.show{transform:translateY(0);opacity:1}
-.push-notif.hide{transform:translateY(-90px);opacity:0;transition:transform .35s ease,opacity .25s ease}
-.push-icon{width:28px;height:28px;background:linear-gradient(135deg,#FF3B30,#c0392b);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;animation:iconPulse 1s ease-in-out infinite}
-@keyframes iconPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,59,48,.5)}50%{box-shadow:0 0 0 5px rgba(255,59,48,0)}}
-.push-icon svg{width:14px;height:14px;fill:#fff}
-.push-body{flex:1;min-width:0}
-.push-app{font-size:8px;color:rgba(255,255,255,.45);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1px}
-.push-title{font-size:10px;font-weight:800;color:#FF6B6B;line-height:1.2;margin-bottom:1px}
-.push-msg{font-size:9px;color:rgba(255,255,255,.8);line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.push-time{font-size:8px;color:rgba(255,255,255,.3);flex-shrink:0;margin-top:2px}
-.multa-pop{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);background:rgba(0,0,0,.94);border:3px solid #FF3B30;border-radius:10px;padding:12px 18px;text-align:center;z-index:20;box-shadow:0 0 40px rgba(255,59,48,.9);animation:multaAppear .4s cubic-bezier(.68,-.55,.265,1.55) forwards;pointer-events:none}
-@keyframes multaAppear{to{transform:translate(-50%,-50%) scale(1)}}
-.multa-label{font-size:8px;color:#FF6B6B;font-weight:700;letter-spacing:1px;margin-bottom:4px}
-.multa-number{font-family:'Roboto Mono',monospace;font-size:24px;font-weight:800;color:#FF3B30;text-shadow:0 0 15px rgba(255,59,48,1);letter-spacing:1px}
-.multa-sub{font-size:7px;color:rgba(255,255,255,.5);margin-top:3px}
-.home-btn{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:100px;height:3px;background:rgba(255,255,255,.25);border-radius:2px}
+/* HOME INDICATOR */
+.home-btn{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:100px;height:3px;background:rgba(255,255,255,0.15);border-radius:2px}
 
-/* ─── SECCIONES INFORMATIVAS (Nuevas) ───────────────────────────────────── */
+/* ─── SECCIONES INFORMATIVAS (Homogéneas) ───────────────────────────────────── */
 .info-section {
     width: 100%;
     max-width: 500px;
-    padding: 30px 20px;
+    padding: 40px 20px;
     position: relative;
     z-index: 10;
-    background: rgba(10, 10, 12, 0.85); /* Fondo semitransparente oscuro */
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 0 auto;
 }
 
-/* SECCIÓN MATEMÁTICA DEL DOLOR */
+/* SECCIÓN MATEMÁTICA DEL DOLOR (Look Magenta Cyberpunk) */
 .math-box {
-    background: #15151A;
-    border: 1px solid #333;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: #111;
+    border: 1px solid #6f42c1; /* Borde Morado */
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7), 0 0 15px rgba(111,66,193,0.3);
 }
 .math-box h2 {
     font-size: 14px;
-    color: #FF6B6B;
+    color: #aaa;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     letter-spacing: 1px;
+    font-weight: 600;
 }
 .cost-row {
     display: flex;
     justify-content: space-between;
     font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    padding: 8px 0;
-    border-bottom: 1px dashed #333;
+    font-size: 15px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #222;
 }
-.cost-row.bad { color: #ccc; }
-.cost-row.bad span { color: #FF3B30; font-weight: bold; }
+.cost-row.bad { color: #888; }
+.cost-row.bad span { 
+    color: #ff00ff; /* Magenta Vibrante */
+    font-weight: bold; 
+    text-shadow: 0 0 5px rgba(255,0,255,0.5);
+}
 .cost-row.good { 
     color: #fff; 
     border-bottom: none; 
-    margin-top: 10px; 
-    padding-top: 15px; 
-    border-top: 2px solid #333;
-    font-size: 16px;
+    margin-top: 15px; 
+    padding-top: 20px; 
+    border-top: 2px solid #222;
+    font-size: 17px;
 }
-.cost-row.good span { color: #00E5FF; font-weight: bold; }
+.cost-row.good span { 
+    color: #00f2fe; /* Cian Eléctrico */
+    font-weight: bold; 
+    text-shadow: 0 0 8px rgba(0,242,254,0.6);
+}
 .trial-text {
     text-align: center;
-    font-size: 11px;
-    color: #FFE600;
-    margin-top: 10px;
-    font-weight: 600;
+    font-size: 12px;
+    color: #6f42c1; /* Morado */
+    margin-top: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 /* SECCIÓN PASOS */
 .steps-box h3 {
     text-align: center;
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    color: #fff;
 }
 .step {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 15px;
-    background: rgba(255,255,255,0.03);
-    padding: 12px;
-    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #1a1a1d;
 }
 .step-icon {
-    font-size: 24px;
-    background: #222;
-    width: 40px;
-    height: 40px;
+    font-size: 20px;
+    background: #111;
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    border: 1px solid #222;
+    color: #00f2fe; /* Cian */
 }
-.step-text { font-size: 13px; color: #ddd; }
+.step-text { font-size: 14px; color: #aaa; line-height: 1.5; }
+.step-text strong { color: #fff; }
 
 /* SECCIÓN FAQ */
-.faq-box { margin-top: 30px; }
-.faq-box h3 { text-align: center; font-size: 16px; margin-bottom: 15px; color: #888; }
-.faq-item { margin-bottom: 15px; }
-.faq-q { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-.faq-a { font-size: 12px; color: #aaa; }
+.faq-box { margin-top: 40px; padding-top: 30px; border-top: 1px solid #1a1a1d;}
+.faq-box h3 { text-align: center; font-size: 16px; margin-bottom: 20px; color: #555; font-weight: 600;}
+.faq-item { margin-bottom: 18px; background: #111; padding: 15px; border-radius: 10px; border: 1px solid #1a1a1d;}
+.faq-q { font-size: 13px; font-weight: 700; color: #00f2fe; margin-bottom: 5px; } /* Cian */
+.faq-a { font-size: 12px; color: #888; line-height: 1.5; }
 
-/* ─── STICKY CTA BOTÓN (El "Cadenero") ───────────────────────────────────── */
+/* ─── STICKY CTA BOTÓN (Homogeneizado) ───────────────────────────────────── */
 .sticky-cta-wrap {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 15px 20px;
-    background: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0));
+    padding: 20px;
+    background: linear-gradient(to top, rgba(10,10,12,1) 60%, rgba(10,10,12,0));
     z-index: 999;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
-/* Botón Telegram */
+/* Botón Telegram (Azul original + Borde Cian) */
 .btn-telegram {
     background: linear-gradient(135deg,#2AABEE,#1a7bbf);
     color: white;
     text-decoration: none;
     width: 100%;
     max-width: 400px;
-    padding: 16px;
+    padding: 18px;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 800;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 4px 20px rgba(42,171,238,0.5);
-    border: 2px solid #fff;
-    animation: ctaPulse 2s infinite;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    border: 2px solid #00f2fe; /* Borde Cian Eléctrico */
+    animation: ctaPulse 2.5s infinite;
+    letter-spacing: 0.5px;
 }
-.btn-telegram svg { width: 20px; height: 20px; fill: white; }
+.btn-telegram svg { width: 18px; height: 18px; fill: white; }
 
-/* Botón Secundario (Si agregas WA después) */
+/* Subtext */
 .sub-cta {
-    color: #888;
+    color: #444;
     font-size: 11px;
-    text-decoration: underline;
+    font-weight: 600;
 }
 
 @keyframes ctaPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(42,171,238,0.5); }
-    50% { transform: scale(1.02); box-shadow: 0 4px 30px rgba(42,171,238,0.8); }
+    0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(0,242,254,0.4); }
+    50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(0,242,254,0.7); }
 }
 </style>
 </head>
@@ -290,34 +266,24 @@ padding-bottom: 100px; /* Espacio para el botón sticky */
 
 <div class="banner-led">
   <div class="banner-content">
-    <span class="banner-text hl">🚨 CONTINGENCIA FASE I</span><span class="banner-dots">●●●</span>
-    <span class="banner-text">PLACAS 5 Y 6 NO CIRCULAN HOY</span><span class="banner-dots">●●●</span>
-    <span class="banner-text hl">MULTA: $3,267 MXN</span><span class="banner-dots">●●●</span>
-    <span class="banner-text">@airegptcdmx_bot TE AVISÓ PRIMERO ⚡</span><span class="banner-dots">●●●</span>
-    <span class="banner-text hl">5 DÍAS GRATIS · SIN TARJETA</span><span class="banner-dots">●●●</span>
-    <span class="banner-text hl">🚨 CONTINGENCIA FASE I</span><span class="banner-dots">●●●</span>
-    <span class="banner-text">PLACAS 5 Y 6 NO CIRCULAN HOY</span><span class="banner-dots">●●●</span>
-    <span class="banner-text hl">MULTA: $3,267 MXN</span><span class="banner-dots">●●●</span>
-    <span class="banner-text">@airegptcdmx_bot TE AVISÓ PRIMERO ⚡</span><span class="banner-dots">●●●</span>
-    <span class="banner-text hl">5 DÍAS GRATIS · SIN TARJETA</span><span class="banner-dots">●●●</span>
+    <span class="banner-text">MONITOREO CDMX</span><span class="banner-dots">●●●</span>
+    <span class="banner-text hl">AIreGPT: ON</span><span class="banner-dots">●●●</span>
+    <span class="banner-text">SENSORES SMAABILITY: ACTIVOS</span><span class="banner-dots">●●●</span>
+    <span class="banner-text hl">POWERED BY GPT-4</span><span class="banner-dots">●●●</span>
+    <span class="banner-text">5 DÍAS GRATIS</span><span class="banner-dots">●●●</span>
+    <span class="banner-text hl">EVITA MULTAS</span><span class="banner-dots">●●●</span>
   </div>
 </div>
 
 <section class="hero-section">
   
   <div class="hero-titles">
-    <div class="fase-badge">
-      <div class="fase-icon">🚨</div>
-      <div>
-        <div class="fase-text">NO SEAS EL PRÓXIMO</div>
-      </div>
-    </div>
-    <h1>QUE NO TE AGARRE LA <span>CONTINGENCIA</span></h1>
-    <p>AIreGPT es tu copiloto de IA. Te avisa si tu auto circula o si hay lluvia extrema directo en tu chat.</p>
+    <h1>TU COPILOTO DE <span>IA</span></h1>
+    <p>Alertas exactas del Hoy No Circula, contingencia y clima directo en tu Telegram.</p>
   </div>
 
-  <div class="floating-emoji emoji1">🚗</div>
-  <div class="floating-emoji emoji2">🛡️</div>
+  <div class="floating-emoji emoji1">🚘</div>
+  <div class="floating-emoji emoji2">📱</div>
 
   <div class="smartphone" id="phone">
     <div class="notch">
@@ -328,26 +294,15 @@ padding-bottom: 100px; /* Espacio para el botón sticky */
       <div class="chat-header">
         <div class="avatar-wrap">
           <div class="h-avatar"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.98 4.23 13.07c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.836.944z"/></svg></div>
-          <div class="notif-badge" id="notifBadge" style="display:none">1</div>
         </div>
         <div class="h-info">
-          <div class="h-name">AIreGPT 🚨</div>
-          <div class="h-status" id="headerStatus">⚠️ CONTINGENCIA ACTIVA</div>
+          <div class="h-name">AIreGPT</div>
+          <div class="h-status" id="headerStatus">🤖 ONLINE · GPT-4</div>
         </div>
       </div>
       <div class="chat-area" id="chatArea">
-        <div class="push-notif" id="pushNotif">
-          <div class="push-icon"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.98 4.23 13.07c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.836.944z"/></svg></div>
-          <div class="push-body">
-            <div class="push-app">Telegram · AIreGPT</div>
-            <div class="push-title">🚨 CONTINGENCIA FASE I</div>
-            <div class="push-msg">Placas 5 y 6 NO circulan · Multa: $3,267 MXN</div>
-          </div>
-          <div class="push-time" id="pushTime"></div>
-        </div>
         <div class="msgs" id="msgContainer">
-          <div class="typing-wrap" id="typingEl"><span></span><span></span><span></span></div>
-        </div>
+          </div>
       </div>
     </div>
     <div class="home-btn"></div>
@@ -362,7 +317,7 @@ padding-bottom: 100px; /* Espacio para el botón sticky */
         <div class="cost-row bad">❌ Multa HNC: <span>$3,267</span></div>
         <div class="cost-row bad">❌ Corralón: <span>$1,500</span></div>
         <div class="cost-row good">✅ AIreGPT: <span>$49 / mes</span></div>
-        <div class="trial-text">Y TUS PRIMEROS 5 DÍAS SON GRATIS</div>
+        <div class="trial-text">TUS PRIMEROS 5 DÍAS SON GRATIS (SIN TARJETA)</div>
     </div>
 
     <div class="steps-box">
@@ -377,23 +332,23 @@ padding-bottom: 100px; /* Espacio para el botón sticky */
         </div>
         <div class="step">
             <div class="step-icon">📍</div>
-            <div class="step-text">Mándale tu ubicación al bot. ¡Listo!</div>
+            <div class="step-text">Mándale tu ubicación al bot y relájate.</div>
         </div>
     </div>
 
     <div class="faq-box">
         <h3>PREGUNTAS FRECUENTES</h3>
         <div class="faq-item">
-            <div class="faq-q">🛡️ ¿Tengo que meter mi tarjeta?</div>
-            <div class="faq-a">No. Pruébalo 5 días sin compromiso y sin dar datos bancarios.</div>
+            <div class="faq-q">🛡️ ¿Pide tarjeta para la prueba gratis?</div>
+            <div class="faq-a">No. Pruébalo 5 días sin compromisos y sin dar datos bancarios.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-q">📱 ¿Debo instalar una App nueva?</div>
-            <div class="faq-a">No. AIreGPT vive dentro de tu Telegram. No ocupa espacio.</div>
+            <div class="faq-q">📱 ¿Ocupa espacio en mi teléfono?</div>
+            <div class="faq-a">Cero. AIreGPT vive dentro de tu Telegram, no descargas nada extra.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-q">❌ ¿Es fácil cancelar?</div>
-            <div class="faq-a">Sí. Con escribir "Cancelar" en el chat se detiene el servicio.</div>
+            <div class="faq-q">❌ ¿Es difícil cancelar?</div>
+            <div class="faq-a">Para nada. Solo escribe "Cancelar" en el chat y se detiene el servicio.</div>
         </div>
     </div>
 
@@ -404,116 +359,74 @@ padding-bottom: 100px; /* Espacio para el botón sticky */
         <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.98 4.23 13.07c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.836.944z"/></svg>
         PROBAR 5 DÍAS GRATIS EN TELEGRAM
     </a>
-    <div class="sub-cta">Usuarios protegidos: +1,247</div>
+    <div class="sub-cta">smability.io</div>
 </div>
 
 <script>
-const phone    = document.getElementById('phone');
 const msgCont  = document.getElementById('msgContainer');
-const typingEl = document.getElementById('typingEl');
-const badge    = document.getElementById('notifBadge');
 const chatArea = document.getElementById('chatArea');
-const pushNotif= document.getElementById('pushNotif');
 
-/* CLOCK */
+/* CLOCK (En el celular) */
 function updateClock(){
   const n=new Date();
   const t=`${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
-  document.getElementById('notchTime').textContent=t;
-  document.getElementById('pushTime').textContent=t;
+  const timeEl = document.getElementById('notchTime');
+  if(timeEl) timeEl.textContent=t;
 }
 updateClock(); setInterval(updateClock,10000);
 
-/* SMOG */
+/* SMOG TECH MORADO */
 const sw=document.getElementById('smogWrap');
-for(let i=0;i<20;i++){
+for(let i=0;i<15;i++){ /* Un poco menos densas */
   const d=document.createElement('div'); d.className='smog';
-  const s=80+Math.random()*200;
-  d.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${12+Math.random()*18}s;animation-delay:${Math.random()*16}s`;
+  const s=100+Math.random()*250;
+  d.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${15+Math.random()*20}s;animation-delay:${Math.random()*10}s`;
   sw.appendChild(d);
 }
 
-/* FLOW */
+/* FLUJO DEL CHAT (Simulando conversación Tech) */
 const msgs=[
-  {side:'bot',cls:'alert',label:'🚨 CONTINGENCIA FASE I · ZMVM',
-   text:'Declarada hace <strong>8 minutos</strong>. Placas <strong>5 y 6 NO circulan</strong> hasta las 22:00 hrs. Aire en nivel <strong>Crítico</strong>. 🔴',
-   shake:true,push:true,slot:false},
-  {side:'user',cls:'',label:'',
-   text:'¡¿Ya?! No había visto nada en las noticias 😱',
-   shake:false,push:false,slot:false},
-  {side:'bot',cls:'hl',label:'📡 8 MINUTOS DE VENTAJA',
-   text:'Monitoreo sensores en tiempo real. Te avisé antes que <strong>Reforma o el radio</strong>. ⚡',
-   shake:false,push:false,slot:true},
-  {side:'user',cls:'',label:'',
-   text:'¿Puedo registrar también mi trabajo para que avise allá? 🏢',
-   shake:false,push:false,slot:false},
-  {side:'bot',cls:'cta',label:'🚀 ACTIVA TUS 2 UBICACIONES',
-   text:'Desde <strong>$49 MXN/mes</strong> · 5 días gratis 🎁 Sin tarjeta.<br>👉 <span class="handle">@airegptcdmx_bot</span>',
-   shake:false,push:false,slot:false,is_cta:true}
+  {side:'bot',text:'👋 ¡Hola! Soy <strong>AIreGPT</strong>, tu nuevo copiloto. Mándame tu ubicación para empezar.'},
+  {side:'user',text:'📍 [Ubicación compartida: Condesa]'},
+  {side:'bot',text:'🤖 Ubicación recibida: <strong>Condesa</strong>.<br>Analizando sensores <strong>Smability</strong>...'},
+  {side:'bot',text:'🚘 <strong>HOY NO CIRCULAS:</strong> Placas 5 y 6 (Rojo).<br>Alertas activas para tu zona. Relájate.'}
 ];
 
-let msgIdx=0, badgeCount=0;
-const PAUSE=2600;
+let msgIdx=0;
+const PAUSE=2800; /* Un poco más lento para lectura */
 
-function slotMulta(el){
-  const vals=['$9,999','$7,500','$5,200','$4,100','$3,267'];
-  let i=0;
-  const iv=setInterval(()=>{el.querySelector('.multa-number').textContent=vals[i++];if(i>=vals.length)clearInterval(iv);},110);
-}
-function showMultaPop(){
-  const pop=document.createElement('div'); pop.className='multa-pop';
-  pop.innerHTML=`<div class="multa-label">⚠️ MULTA EVITADA HOY</div><div class="multa-number">$9,999</div><div class="multa-sub">MXN · CONTINGENCIA FASE I</div>`;
-  chatArea.appendChild(pop); slotMulta(pop);
-  setTimeout(()=>{pop.style.transition='opacity .4s';pop.style.opacity='0';setTimeout(()=>pop.remove(),400);},2800);
-}
-function showPush(){
-  pushNotif.classList.remove('hide'); pushNotif.classList.add('show'); shakePhone();
-  setTimeout(()=>{pushNotif.classList.remove('show'); pushNotif.classList.add('hide');},3400);
-}
-function incBadge(){
-  badgeCount++; badge.style.display='flex'; badge.textContent=badgeCount;
-  badge.style.animation='none'; void badge.offsetWidth;
-  badge.style.animation='badgePop .3s cubic-bezier(.68,-.55,.265,1.55)';
-}
-function shakePhone(){phone.classList.add('phone-shake');setTimeout(()=>phone.classList.remove('phone-shake'),600);}
 function relTime(off){
   const n=new Date(); n.setMinutes(n.getMinutes()+parseInt(off||0));
   return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
 }
+
 function buildMsg(m,idx){
-  const div=document.createElement('div'); div.className=`msg ${m.side} ${m.cls}`;
-  const ts=relTime(idx*2);
+  const div=document.createElement('div'); div.className=`msg ${m.side}`;
+  const ts=relTime(idx);
   div.innerHTML=m.side==='bot'
-    ?`<div class="bname ${m.cls==='hl'?'blue':m.cls==='cta'?'gold':''}">${m.label}</div><div class="bubble">${m.text}</div><span class="mtime">${ts}</span>`
+    ?`<div class="bname">AIreGPT 🤖</div><div class="bubble">${m.text}</div><span class="mtime">${ts}</span>`
     :`<div class="bubble">${m.text}</div><span class="paloma">✓✓ ${ts}</span>`;
   return div;
 }
-function showTyping(){msgCont.appendChild(typingEl); typingEl.style.display='flex'; chatArea.scrollTop=chatArea.scrollHeight;}
-function hideTyping(){typingEl.style.display='none';}
+
 function next(){
   if(msgIdx>=msgs.length){
     setTimeout(()=>{
-      msgCont.innerHTML=''; msgCont.appendChild(typingEl);
-      badgeCount=0; badge.style.display='none';
-      msgIdx=0; setTimeout(next,800);
-    },4000); return;
+      msgCont.innerHTML='';
+      msgIdx=0; setTimeout(next,1000);
+    },5000); return; /* Pausa final antes de reiniciar */
   }
   const m=msgs[msgIdx], idx=msgIdx;
-  if(m.side==='bot') showTyping();
+  
   setTimeout(()=>{
-    hideTyping();
     const el=buildMsg(m,idx);
-    msgCont.insertBefore(el,typingEl);
+    msgCont.appendChild(el);
     chatArea.scrollTop=chatArea.scrollHeight;
-    if(m.side==='bot') incBadge();
-    if(m.shake) shakePhone();
-    if(m.push) setTimeout(showPush,600);
-    if(m.slot) setTimeout(showMultaPop,1000);
     msgIdx++;
-    setTimeout(next, m.slot?PAUSE+2400:PAUSE);
-  }, m.side==='bot'?1000:200);
+    setTimeout(next, PAUSE);
+  }, m.side==='bot'?800:1500); /* Delay simulado de escritura user/bot */
 }
-setTimeout(next,1000);
+setTimeout(next,1500);
 </script>
 
 </body>
