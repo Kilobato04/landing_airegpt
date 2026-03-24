@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIreGPT - AI Agent para CDMX</title>
+  <title>AIreGPT - Tu Copiloto para la CDMX</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -31,17 +31,18 @@
     .smog{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle,rgba(111,66,193,0.1) 0%,transparent 70%);animation:smogRise linear infinite;}
     @keyframes smogRise{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:.5}100%{transform:translateY(-110vh) scale(2.5);opacity:0}}
 
-    /* BANNER LED */
+    /* BANNER LED RESTAURADO (Con el texto de urgencia) */
     .banner-led{width:100%;height:45px;background:#000;overflow:hidden;position:fixed;top:0;left:0;background-image:linear-gradient(90deg,#1a1a1d 2px,transparent 2px),linear-gradient(0deg,#1a1a1d 2px,transparent 2px);background-size:4px 4px;z-index:900;box-shadow:0 2px 10px rgba(0,0,0,0.5)}
-    .banner-content{position:absolute;top:0;left:0;height:100%;white-space:nowrap;display:flex;align-items:center;animation:scrollBanner 25s linear infinite}
+    .banner-content{position:absolute;top:0;left:0;height:100%;white-space:nowrap;display:flex;align-items:center;animation:scrollBanner 28s linear infinite}
     .banner-text{font-family:'Roboto Mono',monospace;font-size:16px;font-weight:700;color:#ddd;letter-spacing:1px;text-transform:uppercase;padding:0 30px}
     .banner-text.hl{color:var(--cyan-neon);font-weight: 800;}
+    .banner-text.alert{color:#ff00ff;font-weight: 800;}
     .banner-dots{color:#333;font-size:14px;margin:0 12px;animation:dotsBlink 1.5s ease-in-out infinite}
     @keyframes scrollBanner{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
     @keyframes dotsBlink{0%,100%{opacity:.2}50%{opacity:1}}
 
-    /* CELULAR CYBERPUNK */
-    .smartphone{width:320px;height:550px;background:#111;border:3px solid var(--cyan-neon);border-radius:35px;position:relative;z-index:10;box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px var(--cyan-neon),0 0 30px 5px rgba(111,66,193,0.6);animation:phoneGlow 3s ease-in-out infinite,phoneSwing 6s ease-in-out infinite,neonFlicker 5s ease-in-out infinite; margin: 0 auto;}
+    /* CELULAR CYBERPUNK BLINDADO (width: 100%, max-width: 320px) */
+    .smartphone{width:100%;max-width:320px;height:550px;background:#111;border:3px solid var(--cyan-neon);border-radius:35px;position:relative;z-index:10;box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px var(--cyan-neon),0 0 30px 5px rgba(111,66,193,0.6);animation:phoneGlow 3s ease-in-out infinite,phoneSwing 6s ease-in-out infinite,neonFlicker 5s ease-in-out infinite; margin: 0 auto;}
     @keyframes neonFlicker{0%{opacity:1;filter:brightness(1)}2%{opacity:0.7;filter:brightness(0.6)}4%{opacity:1;filter:brightness(1.1)}15%{opacity:.85;filter:brightness(.8)}16%{opacity:1;filter:brightness(1.2)}45%{opacity:1;filter:brightness(1)}50%{opacity:.4;filter:brightness(.3)}51%{opacity:1;filter:brightness(1.3)}52%{opacity:.5;filter:brightness(.4)}53%{opacity:1;filter:brightness(1.2)}80%{opacity:.9;filter:brightness(.9)}85%{opacity:1;filter:brightness(1.4)}95%{opacity:.8;filter:brightness(.7)}96%{opacity:1;filter:brightness(1.1)}100%{opacity:1;filter:brightness(1)}}
     @keyframes phoneGlow{0%,100%{box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 10px 2px var(--cyan-neon),0 0 30px 5px rgba(111,66,193,0.6)}50%{box-shadow:0 0 0 1px #222,0 30px 80px rgba(0,0,0,0.8),0 0 15px 3px var(--cyan-neon),0 0 45px 8px rgba(111,66,193,0.8)}}
     @keyframes phoneSwing{0%,100%{transform:perspective(1000px) rotateY(-3deg) rotateX(1deg)}50%{transform:perspective(1000px) rotateY(3deg) rotateX(1deg)}}
@@ -83,8 +84,8 @@
     @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-    /* ── IAS ALERT CARD (Integrada y oscurecida) ── */
-    .ias-card{display:inline-flex;flex-direction:column;width:240px;border-radius:12px;border-bottom-left-radius:3px;overflow:hidden;border:1px solid #e74c3c;box-shadow:0 0 14px rgba(231,76,60,.3); margin-top: 5px; animation:fadeIn .45s ease forwards;}
+    /* IAS ALERT CARD */
+    .ias-card{display:inline-flex;flex-direction:column;width:240px;max-width:90%;border-radius:12px;border-bottom-left-radius:3px;overflow:hidden;border:1px solid #e74c3c;box-shadow:0 0 14px rgba(231,76,60,.3); margin-top: 5px; animation:fadeIn .45s ease forwards;}
     .ias-header{background:linear-gradient(135deg,#7b1a1a,#a93226);padding:8px 12px;display:flex;align-items:center;gap:8px}
     .ias-icon{font-size:18px;line-height:1}
     .ias-htxt .ias-title{font-size:11px;font-weight:800;color:#fff;line-height:1.2}
@@ -92,11 +93,8 @@
     .ias-body{background:#111;padding:10px 12px;display:flex;flex-direction:column;gap:5px}
     .ias-row{display:flex;justify-content:space-between;align-items:center}
     .ias-lbl{font-size:9px;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:.4px;text-transform:uppercase}
-    .ias-val{font-family:'Roboto Mono',monospace;font-size:14px;font-weight:800;color:#ff00ff; text-shadow: 0 0 5px rgba(255,0,255,0.5);} /* Magenta neón */
+    .ias-val{font-family:'Roboto Mono',monospace;font-size:14px;font-weight:800;color:#ff00ff; text-shadow: 0 0 5px rgba(255,0,255,0.5);} 
     .ias-div{height:1px;background:rgba(231,76,60,.2);margin:4px 0}
-    
-    .ias-asma{background:#1a1010;border:1px solid rgba(231,76,60,.35);border-radius:7px;padding:8px;font-size:10px;color:#ddd;line-height:1.45}
-    .ias-asma strong{color:#ff4444; display:block;margin-bottom:2px}
     
     .ias-circ{background:#101a10;border:1px solid rgba(39,174,96,.3);border-radius:7px;padding:8px;font-size:10px;color:#ddd;line-height:1.45}
     .ias-circ strong{color:#00E5FF; display:block;margin-bottom:2px}
@@ -121,12 +119,16 @@
 
   <div class="banner-led">
     <div class="banner-content">
-      <span class="banner-text">MONITOREO CDMX</span><span class="banner-dots">●●●</span>
-      <span class="banner-text hl">AIreGPT: ON</span><span class="banner-dots">●●●</span>
-      <span class="banner-text">SENSORES SMAABILITY: ACTIVOS</span><span class="banner-dots">●●●</span>
-      <span class="banner-text hl">POWERED BY GPT-4</span><span class="banner-dots">●●●</span>
-      <span class="banner-text">5 DÍAS GRATIS</span><span class="banner-dots">●●●</span>
-      <span class="banner-text hl">EVITA MULTAS</span><span class="banner-dots">●●●</span>
+      <span class="banner-text hl">🚨 CONTINGENCIA FASE I</span><span class="banner-dots">●●●</span>
+      <span class="banner-text">PLACAS 5 Y 6 NO CIRCULAN HOY</span><span class="banner-dots">●●●</span>
+      <span class="banner-text alert">MULTA: $3,267 MXN</span><span class="banner-dots">●●●</span>
+      <span class="banner-text">@airegptcdmx_bot TE AVISÓ PRIMERO ⚡</span><span class="banner-dots">●●●</span>
+      <span class="banner-text hl">5 DÍAS GRATIS · SIN TARJETA</span><span class="banner-dots">●●●</span>
+      <span class="banner-text hl">🚨 CONTINGENCIA FASE I</span><span class="banner-dots">●●●</span>
+      <span class="banner-text">PLACAS 5 Y 6 NO CIRCULAN HOY</span><span class="banner-dots">●●●</span>
+      <span class="banner-text alert">MULTA: $3,267 MXN</span><span class="banner-dots">●●●</span>
+      <span class="banner-text">@airegptcdmx_bot TE AVISÓ PRIMERO ⚡</span><span class="banner-dots">●●●</span>
+      <span class="banner-text hl">5 DÍAS GRATIS · SIN TARJETA</span><span class="banner-dots">●●●</span>
     </div>
   </div>
 
@@ -135,8 +137,8 @@
     <section class="min-h-screen w-full flex flex-col items-center justify-center pt-24 pb-12 px-4">
       
       <div class="text-center mb-8 max-w-lg">
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4" style="text-shadow: 0 0 15px rgba(111,66,193,0.5);">
-          TU COPILOTO DE <span style="color: var(--cyan-neon); text-shadow: 0 0 10px rgba(0,242,254,0.7);">IA</span>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-4 leading-tight" style="text-shadow: 0 0 15px rgba(111,66,193,0.5);">
+          TU COPILOTO PARA NAVEGAR LA <span style="color: var(--cyan-neon); text-shadow: 0 0 10px rgba(0,242,254,0.7);">CDMX</span>
         </h1>
         <p class="text-gray-400 text-base md:text-lg">
           Alertas exactas del Hoy No Circula, contingencia y clima directo en tu Telegram.
@@ -349,22 +351,30 @@
         
         // Mensaje 1: Bienvenida
         await showTyping(800);
-        addSimpleMsg('bot', '👋 ¡Hola! Soy <strong>AIreGPT</strong>. Compárteme tu ubicación para activar tus alertas.', 0);
+        addSimpleMsg('bot', '👋 ¡Hola! Soy <strong>AIreGPT</strong>. Compárteme tu ubicación para protegerte de multas y contingencias.', 0);
         
         // Mensaje 2: Usuario manda ubicación
         await wait(1500);
         addSimpleMsg('user', '📍 [Ubicación compartida: CDMX]', 1);
         
-        // Mensaje 3: Bot procesa
-        await showTyping(1200);
-        addSimpleMsg('bot', '🤖 Ubicación recibida.<br>Analizando sensores <strong>Smability</strong> de tu zona...', 1);
+        // Mensaje 3: Bot confirma
+        await showTyping(1000);
+        addSimpleMsg('bot', '🤖 Ubicación confirmada.<br>Conectando con sensores <strong>Smability</strong>...', 1);
         
-        // Mensaje 4: LA TARJETA ROJA (IAS Card)
+        // Mensaje 4: Bot procesa clima/HNC
+        await showTyping(1200);
+        addSimpleMsg('bot', '📡 Analizando el pronóstico de lluvia extrema y el Hoy No Circula...', 1);
+
+        // Mensaje 5: Usuario pregunta
+        await wait(1800);
+        addSimpleMsg('user', '¿Todo bien para salir a la oficina?', 2);
+
+        // Mensaje 6: LA TARJETA ROJA (IAS Card)
         await showTyping(1500);
         addIASCard(2);
 
         // Loop infinito
-        setTimeout(runChatSequence, 7000);
+        setTimeout(runChatSequence, 8000);
     }
 
     // Iniciar secuencia
