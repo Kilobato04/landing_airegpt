@@ -117,8 +117,9 @@
     @keyframes statusBlink { 0%,100%{opacity:1} 50%{opacity:.3} }
 
     /* ── CHAT AREA ── */
-    .chat-area { flex:1; overflow:hidden; position:relative; background:#17212b; }
-    .msgs { position:absolute; top:0; left:0; right:0; bottom:0; padding:10px 8px; display:flex; flex-direction:column; gap:7px; overflow:hidden; }
+    .chat-area { flex:1; overflow-y:auto; background:#17212b; display:flex; flex-direction:column; position:relative; }
+    .chat-area::-webkit-scrollbar { display:none; }
+    .msgs { flex:1; padding:10px 8px; display:flex; flex-direction:column; gap:7px; justify-content:flex-end; min-height:100%; }
     .msg { opacity:0; transform:translateY(12px); animation:fadeIn .4s ease forwards; display:flex; flex-direction:column; }
     .msg.bot { align-items:flex-start; }
     .msg.user { align-items:flex-end; }
@@ -190,7 +191,7 @@
     @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-4px)} }
 
     /* ── PUSH ── */
-    .push-notif { position:absolute; top:30px; left:6px; right:6px; background:rgba(10,20,30,.97); border-radius:12px; padding:9px 10px; z-index:50; display:flex; align-items:flex-start; gap:8px; box-shadow:0 8px 28px rgba(0,0,0,.7),0 0 0 1px rgba(0,242,254,.25); backdrop-filter:blur(12px); transform:translateY(-90px); opacity:0; transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .35s ease; }
+    .push-notif { position:absolute; top:30px; z-index:50; left:6px; right:6px; background:rgba(10,20,30,.97); border-radius:12px; padding:9px 10px; z-index:50; display:flex; align-items:flex-start; gap:8px; box-shadow:0 8px 28px rgba(0,0,0,.7),0 0 0 1px rgba(0,242,254,.25); backdrop-filter:blur(12px); transform:translateY(-90px); opacity:0; transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .35s ease; }
     .push-notif.show { transform:translateY(0); opacity:1; }
     .push-notif.hide { transform:translateY(-90px); opacity:0; transition:transform .35s ease,opacity .25s ease; }
     .push-icon { width:28px; height:28px; background:linear-gradient(135deg,#0d2a40,#1a5a7a); border:1px solid var(--cyan-neon); border-radius:7px; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 0 8px rgba(0,242,254,.3); }
@@ -638,51 +639,40 @@ async function flow(){
   await typing(1000);
   botMsg('hl','cyan','📡 8 MINUTOS DE VENTAJA','Sensores <strong>Smability</strong> en tiempo real. Te avisé antes que <strong>Reforma, Milenio y el radio</strong>. ⚡ Alerta directo a tu <strong>Casa registrada</strong>. 🏠');
   setTimeout(showMultaPop,900);
-  await wait(3200);
+  await wait(3400);
 
   // 4. User asks about work location
   userMsg('¿Puedo registrar también dónde trabajo? 🏢');
-  await wait(1600);
-
-  // 5. Bot explains location
-  await typing(900);
-  botMsg('hl','cyan','📍 COMPARTE TU UBICACIÓN','Sí. Registra <strong>Casa y Trabajo</strong> por separado. Cada zona tiene sus propios sensores y alertas. Toca el clip 📎 → Ubicación.');
-  await wait(2000);
-
-  // 6. User shares map pin
-  mapMsg('Casa — Col. Doctores, CDMX','19.4326° N  99.1332° W',42);
   await wait(1800);
 
-  // 7. Bot confirms + AQ card
-  await typing(1100);
-  aqCard();
-  await wait(3000);
+  // 5. Bot explains location + user shares map
+  await typing(1000);
+  botMsg('hl','cyan','📍 COMPARTE TU UBICACIÓN','Sí. Registra <strong>Casa y Trabajo</strong> por separado — cada zona tiene sus propios sensores. Toca el clip 📎 → Ubicación y envíame dónde vives.');
+  await wait(2400);
+  mapMsg('Casa — Col. Doctores, CDMX','19.4326° N  99.1332° W',42);
+  await wait(2200);
 
-  // 8. User asks about car
-  userMsg('¿Y cómo sé si puedo sacar el coche? 🚗');
-  await wait(1600);
-
-  // 9. Bot asks for plate
-  await typing(800);
-  botMsg('','cyan','🚗 REGISTRA TU VEHÍCULO','Dime la <strong>terminación de tu placa</strong> y tu <strong>número de holograma</strong>.');
-  await wait(2000);
-
-  // 10. User answers
-  userMsg('Placa termina en 5, holograma 1');
-  await wait(1600);
-
-  // 11. No circula card
+  // 6. Bot confirms + AQ card
   await typing(1200);
-  noCirculaCard();
-  await wait(3400);
+  aqCard();
+  await wait(3200);
 
-  // 12. User asks price
-  userMsg('¿Cuánto cuesta AIreGPT? 💰');
-  await wait(1500);
+  // 7. User asks about car
+  userMsg('¿Y cómo sé si puedo sacar el coche? 🚗');
+  await wait(1800);
 
-  // 13. CTA
+  // 8. Bot asks for plate
   await typing(900);
-  botMsg('cta','gold','🚀 ACTIVA TU PROTECCIÓN','Desde <strong>$49 MXN/mes</strong> · 5 días gratis 🎁 Sin tarjeta.<br>👉 <span class="handle">@airegptcdmx_bot</span>');
+  botMsg('','cyan','🚗 REGISTRA TU VEHÍCULO','Dime la <strong>terminación de tu placa</strong> y tu <strong>número de holograma</strong> de verificación.');
+  await wait(2200);
+
+  // 9. User answers
+  userMsg('Placa termina en 5, holograma 1');
+  await wait(1800);
+
+  // 10. No circula card
+  await typing(1300);
+  noCirculaCard();
   await wait(5000);
 
   setTimeout(flow,2500);
